@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta http-equiv="content-type" charset="UTF-8">
+    </head>
+
+    <body>
+
+        <form name="mainform" method="POST" action="/cgi-bin/index.py">
+            <label>Username(Discordでの表示名)</label><br>
+            <input type="text" name="username" required><br><br>
+            <label>学生ID(学生証記載の番号)</label><br>
+            <input type="text" name="studentid" required><br><br>
+            <label>NFC ID</label><br>
+            <input type="text" name="nfcid" required><br><br>
+            <label>所属</label>
+            <input type="radio" name="affiliationcode" value="1" required><label for="1">同志社大学</label>
+            <input type="radio" name="affiliationcode" value="2"><label for="2">同志社女子大学</label>
+            <input type="radio" name="affiliationcode" value="3"><label for="3">その他</label><br><br>
+            <input type="submit">
+        </form>
+
+        <script type="text/javascript">
+            function getdata(){
+                if(window.location.search){
+                    var pram = window.location.search.substring(1);
+                    var pair = pram.split("&");
+                    for(var i = 0; i < pair.length; i++)
+                    {
+                        var temp = pair[i].split("=")
+                        if(temp[0] == "sid"){
+                            document.mainform.elements["studentid"].value = temp[1];
+                        }else if(temp[0] == "nid"){
+                            document.mainform.elements["nfcid"].value = temp[1];
+                        }
+                    }
+                }
+            }
+            window.onload = getdata;
+        </script>
+
+    </body>
+
+</html>

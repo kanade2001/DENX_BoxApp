@@ -1,3 +1,3 @@
-def main(id, mail):
+def main(username, studentID, NFCID):
     # IDとメールアドレスをmember.csvに登録
-    print("addMember.py: ", id, mail)
+    print("addMember.py: ", username, studentID, NFCID)
