@@ -13,9 +13,9 @@ def main():
     elif idm == settings.IDM_DEBUG:
         debug.main()
     else:
-        username = collationNFC.main()
+        username, status = collationNFC.main()
         if username != None:
-            sendMessageToDiscord.main(username)
+            sendMessageToDiscord.main(username, status)
 
 if __name__ == "__main__":
     while True:
