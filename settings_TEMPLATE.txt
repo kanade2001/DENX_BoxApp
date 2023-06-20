@@ -1,0 +1,4 @@
+ファイル名をsettings.pyに変更して保存してください
+
+IDM_REGISTER = 0123456789ABCDEF
+IDM_DEBUG = 0123456789ABCDEF
