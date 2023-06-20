@@ -1,8 +1,9 @@
 import nfc
+import binascii
 
-def doshisha():
+def main():
     clf = nfc.ContactlessFrontend('usb')
-    tag = clf.connect(rdwr={'on-connect': lambda tag: False})
+    tag = clf.connect(rdwr={'targets': ['212F', '424F'], 'on-connect': lambda tag: False})
 
     service_code_id = 0x1a8B
     service_code_mail = 0x200B
@@ -23,12 +24,11 @@ def doshisha():
     data = tag.read_without_encryption([sc],[bc])
     Mail = data[0:9].decode()
     Mail += "@doshisha.ac.jp"
+    
+    idm = binascii.hexlify(tag.idm).decode()
 
-    return StuID, Mail
+    return StuID, Mail, idm
 
 if __name__ == "__main__":
-    id, mail = doshisha()
-    print(id)
-    print(mail)
-
-
+    id, mail, idm = main()
+    print(id, mail, idm)
