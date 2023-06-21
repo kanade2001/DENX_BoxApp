@@ -35,4 +35,5 @@ def getStudentID():
 
     return StuID, Mail, idm
 
-
+if __name__ == "__main__":
+    print(main())
