@@ -19,7 +19,8 @@ def read():
 
         if idm == settings.IDM_REGISTER:
             register.main()
-        elif idm == settings.IDM_DEBUG:
+        #elif idm == settings.IDM_DEBUG:
+        elif True:
             debug.main()
         else:
             username, showname, status = accessDatabase.collationMember(idm)
