@@ -1,13 +1,27 @@
 import nfc
 import binascii
+import time
+import wrapt_timeout_decorator
+import settings
 
+lastreadtime = time.time()
+
+@wrapt_timeout_decorator.timeout(dec_timeout=settings.DISPLAY_TIME_WAIT)
 def main():
+    global lastreadtime
+    while lastreadtime > time.time():
+        pass
     clf = nfc.ContactlessFrontend('usb')
     tag = clf.connect(rdwr={'targets': ['212F', '424F'], 'on-connect': lambda tag: False}) # Type3Tagを取得
     idm = binascii.hexlify(tag.idm).decode() # 固有IDの抽出
+    lastreadtime = time.time() + settings.DISPLAY_TIME_COMPLETE
     return idm
 
+@wrapt_timeout_decorator.timeout(dec_timeout=settings.DISPLAY_TIME_WAIT)
 def getStudentID():
+    global lastreadtime
+    while lastreadtime > time.time():
+        pass
     clf = nfc.ContactlessFrontend('usb')
     tag = clf.connect(rdwr={'targets': ['212F', '424F'], 'on-connect': lambda tag: False})
 
@@ -32,6 +46,8 @@ def getStudentID():
     Mail += "@doshisha.ac.jp"
     
     idm = binascii.hexlify(tag.idm).decode()
+    
+    lastreadtime = time.time() + settings.DISPLAY_TIME_COMPLETE
 
     return StuID, Mail, idm
 

@@ -1,5 +1,6 @@
-def collationMember(idm):
-    # member.csvにidmが登録されていればusername，showname，statusを返し，statusを更新
+def collationMember(idm, updateStatus=True):
+    # member.csvにidmが登録されていればusername，showname，statusを返す
+    # updateStatus=Trueならstatusを更新(反転)
     # 登録されていなければnoneを返す
     print("collationMember", idm)
     
