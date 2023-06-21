@@ -8,8 +8,9 @@ import server
 import display
 import settings
 import datetime
+import threading
 
-async def read():
+def read():
     while True:
         try:
             idm = readNFC.main()
@@ -29,19 +30,25 @@ async def read():
                     display.update("Hello", showname, settings.DISPLAY_TIME_COMPLETE)
                 sendMessageToDiscord.main(username, status)
 
-async def disp():
+def disp():
     while True:
         display.main()
 
-async def clock():
+def clock():
     while True:
         now = datetime.datetime.now().date() + " " + datetime.datetime.now().time().isoformat(timespec='seconds')
         now = str(datetime.datetime.now().date()) + " " + str(datetime.datetime.now().time().isoformat(timespec='seconds'))
         display.update("DENX BOX 233", now, 0)
 
+def runserver():
+    server.RUN()
+
 async def main():
-    await asyncio.gather(read, disp, clock)
+    print("start")
+    threading.Thread(target=read).start()
+    threading.Thread(target=disp).start()
+    threading.Thread(target=clock).start()
+    threading.Thread(target=runserver).start()
 
 if __name__ == "__main__":
-    server.RUN()
     main()
