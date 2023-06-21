@@ -1,12 +1,10 @@
 import nfc
 import binascii
 import time
-import timeout_decorator
 import settings
 
 lastreadtime = time.time()
 
-@timeout_decorator.timeout(settings.DISPLAY_TIME_WAIT)
 def main():
     global lastreadtime
     while lastreadtime > time.time():
@@ -17,7 +15,6 @@ def main():
     lastreadtime = time.time() + settings.DISPLAY_TIME_COMPLETE
     return idm
 
-@timeout_decorator.timeout(settings.DISPLAY_TIME_WAIT)
 def getStudentID():
     global lastreadtime
     while lastreadtime > time.time():

@@ -1,14 +1,13 @@
 import drivers
 import time
+import datetime
 
 str1 = ""
 str2 = ""
 showlimit = time.time()
+display = drivers.Lcd()
 
 def main():
-    global str1
-    global str2
-    display = drivers.Lcd()
     display.lcd_display_string(str1, 1)
     display.lcd_display_string(str2, 2)
 

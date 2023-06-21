@@ -36,14 +36,13 @@ def disp():
 
 def clock():
     while True:
-        now = datetime.datetime.now().date() + " " + datetime.datetime.now().time().isoformat(timespec='seconds')
         now = str(datetime.datetime.now().date()) + " " + str(datetime.datetime.now().time().isoformat(timespec='seconds'))
         display.update("DENX BOX 233", now, 0)
 
 def runserver():
     server.RUN()
 
-async def main():
+def main():
     print("start")
     thread_1 = threading.Thread(target=read)
     thread_2 = threading.Thread(target=disp)
