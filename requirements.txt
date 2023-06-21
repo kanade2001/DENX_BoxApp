@@ -1,2 +1,2 @@
 nfcpy
-wrapt-timeout-decorator
+timeout-decorator

@@ -4,6 +4,7 @@ import display
 def main():
     try:
         idm = readNFC.main()
-        display("IDM:", idm)
-    except Exception as err:
-        pass
+    except TimeoutError:
+        return
+
+    display.update("Your idm is", idm)

@@ -13,7 +13,7 @@ async def read():
     while True:
         try:
             idm = readNFC.main()
-        except Exception as err:
+        except TimeoutError:
             continue
 
         if idm == settings.IDM_REGISTER:
