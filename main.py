@@ -45,10 +45,15 @@ def runserver():
 
 async def main():
     print("start")
-    threading.Thread(target=read).start()
-    threading.Thread(target=disp).start()
-    threading.Thread(target=clock).start()
-    threading.Thread(target=runserver).start()
+    thread_1 = threading.Thread(target=read)
+    thread_2 = threading.Thread(target=disp)
+    thread_3 = threading.Thread(target=clock)
+    thread_4 = threading.Thread(target=runserver)
+    
+    thread_1.start()
+    thread_2.start()
+    thread_3.start()
+    thread_4.start()
 
 if __name__ == "__main__":
     main()
