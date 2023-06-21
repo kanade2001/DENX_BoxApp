@@ -1,3 +1,4 @@
 import http.server
 
-http.server.test(HandlerClass=http.server.CGIHTTPRequestHandler)
+def RUN():
+    http.server.test(HandlerClass=http.server.CGIHTTPRequestHandler)
