@@ -10,6 +10,9 @@ display = drivers.Lcd()
 def main():
     display.lcd_display_string(str1, 1)
     display.lcd_display_string(str2, 2)
+    
+def clear():
+    display.lcd_clear()
 
 def update(line1, line2, waittime=60):
     global str1

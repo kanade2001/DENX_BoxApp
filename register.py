@@ -5,6 +5,8 @@ import accessDatabase
 
 # 学生IDとメールアドレスを取得
 def main():
+    display.clear()
+    display.update("REGISTER MODE", "Touch NFC Tag")
     try:
         id, mail, idm = readNFC.getStudentID()
     except TimeoutError:
