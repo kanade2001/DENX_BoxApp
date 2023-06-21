@@ -14,6 +14,4 @@ form = cgi.FieldStorage()
 
 print('<p>こんにちは！%sさん</p>' % (form['username'].value))
 
-f = open('test.txt', 'w', encoding='utf-8')
-f.write( form['username'].value)
-f.close()
+# username, showname, studentid, nfcidをmember.csvに登録
