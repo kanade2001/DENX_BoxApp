@@ -37,7 +37,7 @@ def disp():
 
 def clock():
     while True:
-        now = str(datetime.datetime.now().date()) + " " + str(datetime.datetime.now().time().isoformat(timespec='seconds'))
+        now = str(datetime.datetime.now().date())[5:] + " " + str(datetime.datetime.now().time().isoformat(timespec='seconds'))
         display.update("DENX BOX 233", now, 0)
 
 def runserver():
