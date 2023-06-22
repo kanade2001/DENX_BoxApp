@@ -35,11 +35,6 @@ def disp():
     while True:
         display.main()
 
-def clock():
-    while True:
-        now = str(datetime.datetime.now().date())[5:] + " " + str(datetime.datetime.now().time().isoformat(timespec='seconds'))
-        display.update("DENX BOX 233", now, 0)
-
 def runserver():
     server.RUN()
 
@@ -47,13 +42,11 @@ def main():
     print("start")
     thread_1 = threading.Thread(target=read)
     thread_2 = threading.Thread(target=disp)
-    thread_3 = threading.Thread(target=clock)
-    thread_4 = threading.Thread(target=runserver)
+    thread_3 = threading.Thread(target=runserver)
     
     thread_1.start()
     thread_2.start()
     thread_3.start()
-    thread_4.start()
 
 if __name__ == "__main__":
     main()
